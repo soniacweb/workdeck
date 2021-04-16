@@ -1,3 +1,3 @@
 # To-do-list-app
 
-To-do app for Multiverse project 1
+To-do app for Multiverse Bootcamp project 1
