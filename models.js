@@ -17,14 +17,6 @@ class Task extends Model {
 
 }
 
-
-//   Task.init({
-//     title: DataTypes.STRING,
-//     description: DataTypes.STRING,
-//     column: DataTypes.INTEGER,
-//     defaultValue: 0,
-//   }, options);
-
   Task.init({
     title: DataTypes.STRING,
     description: DataTypes.STRING,

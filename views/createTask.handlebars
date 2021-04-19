@@ -13,19 +13,21 @@
 </head>
 <body>
     
-    <div class="card text-center">
-        <div class="card-header">
-          Hey there!
-        </div>
-        <div class="card-body">
-          <h5 class="card-title">Create your first project</h5>
-          <p class="card-text"></p>
-          <a href="./projectForm.html" class="btn btn-primary">Add Project</a>
-        </div>
-        <!-- <div class="card-footer text-muted">
-          2 days ago
-        </div> -->
+
+    <!-- form for adding projects -->
+    <form class="row g-3" action="/create-task" method="POST">
+    <div class="mb-3">
+        <label for="taskname" class="form-label">Task Title</label>
+        <input type="text" class="form-control" id="taskname" placeholder="Task Title" name="title">
       </div>
+      <div class="mb-3">
+        <label for="task-description" class="form-label">Description</label>
+        <textarea type="text" class="form-control" id="task-description" rows="3" name="description"></textarea>
+        <div class="col-auto">
+            <button type="submit" value="Submit" class="btn btn-primary mb-3">Add Task</button>
+          </div>
+        </div>
+      </form>
 
 </body>
 </html>
