@@ -24,5 +24,6 @@ async function initialise() {
     // console.log(newTask)
     // console.log(newUser)    
 }
-
 initialise()
+
+module.exports = initialise

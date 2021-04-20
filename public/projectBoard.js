@@ -1,3 +1,5 @@
+console.log('test')
+
 const draggables = document.querySelectorAll('.card');
 const containers = document.querySelectorAll('.sub-container');
 draggables.forEach(draggable => {

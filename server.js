@@ -30,7 +30,11 @@ app.set('view engine', 'handlebars')
 // create if check- if projects exist, direct to allProjects, else send to createProject
 app.get('/', async (req, res) => {
     const projects = await Project.findAll()
+   if(projects.length > 0){
     res.render('allProjects', {projects})
+   } else {
+    res.render('createFirstProject')
+   }
 })
 
 app.get('/all-projects', async (req, res) => {
@@ -40,29 +44,34 @@ app.get('/all-projects', async (req, res) => {
 app.get('/create-project', async (req, res) => {
     res.render('createProject')
 })
+
+
 // saving a new project to DB
 app.post('/create-project', async (req, res) => {
     await Project.create({
         name: req.body.name,
         summary: req.body.summary,
     })
-        res.redirect('project-dashboard')
+        res.redirect('/project/{{project.id}}')
     })
 
-app.get('/create-task', async (req, res) => {
+app.get('/project/:id/create-task', async (req, res) => {
     res.render('createTask')
 })
 
-app.post('/create-task', async (req, res) => {
+app.post('/project/{{project.id}}/create-task', async (req, res) => {
+
+    const projectid =  await Project.findByPk(req.params.id)
     await Task.create({
         title: req.body.title,
         description: req.body.description,
         column: 0,
+        ProjectId: projectid
     })
         res.redirect('project-dashboard')
     })
 
-app.get('/project-dashboard', async (req, res) => {
+app.get('/project/:id', async (req, res) => {
     const tasks = await Task.findAll()
     res.render('projectBoard', {tasks})
 })
@@ -78,6 +87,23 @@ app.post('/create-user', async (req, res) => {
     })
         res.redirect('allProjects')
     })
+
+app.get('/:name/:id/delete', async (req, res) => {
+    Task.findByPk(req.params.id)
+        .then(task => {
+            task.destroy()
+                res.redirect('/')
+            })
+    })
+// app.get('/restaurants/:id/edit', async (req, res) => {
+//     const restaurant = await Restaurant.findByPk(req.params.id)
+//     res.render('edit', {restaurant})
+//     })
+// app.post('/restaurants/:id/edit', async (req, res) => {
+//     const restaurant = await Restaurant.findByPk(req.params.id)
+//     await restaurant.update(req.body)
+//     res.redirect(`/restaurants/${restaurant.id}`)
+//     })
 
 app.listen(port, () => {
     console.log(`Server listening at http://localhost:${port}`)
