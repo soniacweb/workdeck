@@ -105,7 +105,7 @@ We constructed a very basic mockup on figma to illustrate the user journey. The 
 
 The objective was to implement a data model with Sequelize.
 
-We first created `db.js` that sets up a connection to the database and imports sequelize types.
+We first created `db.js` that sets up a connection to the database and imports sequelize types while establishing a filepath for the database.
 
 ```
 const {Sequelize, DataTypes, Model} = require('sequelize');
@@ -121,7 +121,7 @@ const sequelize = new Sequelize('database', 'username', 'password', {
 
 ## Defining the model in model.js
 
-We quickly learnt models are fundamental in Sequalize and initialised 3 to represent our tables in our database.  It's represented by classes that extends Model. This format only requires us to extend from the Sequelize class Model as a method of inheritance. The addition of an `init` method defines the table columns and their types, while the `options` setting sets the`timestamps: false` to avoid a `created_at` column appearing. 
+We quickly learnt models are fundamental in Sequelize and initialised 3 to represent our tables in our database.  It's represented by classes that extends Model. This format only requires us to extend from the Sequelize class Model as a method of inheritance. The addition of an `init` method defines the table columns and their types, while the `options` setting sets the `timestamps: false` to avoid a `created_at` column appearing. 
 
 Below is an exerpt of the `Project` model:
 
@@ -137,7 +137,9 @@ Project.init({
 
 ```
 
-## Sequalize relationships in model.js
+## Sequelize relationships in model.js
+
+To connect tables in sequelize our model definitions needed to specify their relationships in order for Sequelize to generate new foreign key columns. The below lists the relational defintions between our models: 
 
 ```
 Project.hasMany(Task)
@@ -148,10 +150,25 @@ Task.belongsTo(Project)
 
 ## Handlebars
 
-We used a templating framework called Handlebars to dynamically inject and render relevant information from our sequalize database. 
+We used a templating framework called Handlebars to dynamically iterate, inject and render relevant information from our sequelize database. 
 An exerpt of this is below: 
 
-
+```
+  <div class="row">
+    {{#each projects}}
+    <a href="/projects/{{this.id}}">
+    <div class="col-sm-3">
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title">{{this.name}}</h5>
+          <p class="card-text">{{this.summary}}</p>
+          <a href="/projects/{{this.id}}" class="btn btn-primary">Open Project</a>
+        </div>
+      </div>
+    </div>
+    </a>
+    {{/each}}
+```
 
 A Handlebars expression is content surrounded by {{ }}. When the template is executed, the expression is replaced with values from an input object.
 
