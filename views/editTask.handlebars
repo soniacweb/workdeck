@@ -1,0 +1,13 @@
+<header class= "edit-task">
+
+<h1 class= "edit-task">Edit {{task.title}}</h1><BR>
+</header>
+
+<form class= "edit-task" action="/{{task.id}}/edit" method="POST">
+    <label>New Name:</label><br>
+    <input type="text" name="title" minlength="1" title="task must have a title" placeholder= "please enter your new task title" required><br><BR>
+    <p>Current description: {{task.description}}</p><br>
+    <label>New Description:</label><br>
+    <input type="text" name="description" placeholder= "please add your new task description" required><br><br>
+    <input type="submit" value="Submit">
+</form>

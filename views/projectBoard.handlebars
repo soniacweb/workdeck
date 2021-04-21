@@ -22,20 +22,19 @@
     <div class="row row-cols-3">
       <div class="col">
         <h2>To do</h2>
-        {{#each tasks}}
+        <a href="/projects/{{projectID}}/create-task">Add Task</a>
         <div class="sub-container">
+          {{#each tasks}}
           <div class="card" style="width: 18rem;" draggable="true">
             <div class="card-body">
               <h5 class="card-title">{{this.title}}</h5>
               <p class="card-text">{{this.description}}</p>
-              <button class="card-link" type="submit" value="edit"
-                action="/{{project.name}}/{{task.id}}/edit">Edit</button>
-              <button class="card-link" type="submit" value="delete"
-                action="/{{project.name}}/{{task.id}}/delete">Delete</button>
+              <a class="card-link" href="/{{this.id}}/edit">Edit</a>
+              <a class="card-link" href ="/{{this.id}}/delete">Delete</a>
             </div>
           </div>
-        </div>
         {{/each}}
+        </div>
       </div>
 
 
@@ -43,33 +42,12 @@
         <h2>In progress</h2>
         <div class="sub-container">
 
-          <div class="card" style="width: 18rem;" draggable="true">
-            <div class="card-body">
-              <h5 class="card-title">Card title</h5>
-              <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
-              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's
-                content.</p>
-              <a href="#" class="card-link">Card link</a>
-              <a href="#" class="card-link">Another link</a>
-            </div>
-          </div>
         </div>
       </div>
 
       <div class="col">
         <h2>Complete</h2>
         <div class="sub-container">
-
-          <div class="card" style="width: 18rem;" draggable="true">
-            <div class="card-body">
-              <h5 class="card-title">Card title</h5>
-              <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
-              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's
-                content.</p>
-              <a href="#" class="card-link">Card link</a>
-              <a href="#" class="card-link">Another link</a>
-            </div>
-          </div>
 
         </div>
       </div>

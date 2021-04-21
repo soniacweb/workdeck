@@ -38,42 +38,34 @@ app.get('/', async (req, res) => {
 })
 
 app.get('/all-projects', async (req, res) => {
-    res.render('allProjects')
+    const projects = await Project.findAll()
+    if(projects.length > 0){
+    res.render('allProjects', {projects})
+    } else {
+    res.render('createFirstProject')
+    }
 })
+
 
 app.get('/create-project', async (req, res) => {
     res.render('createProject')
 })
 
-
 // saving a new project to DB
 app.post('/create-project', async (req, res) => {
-    await Project.create({
+    const project = await Project.create({
         name: req.body.name,
         summary: req.body.summary,
     })
-        res.redirect('/project/{{project.id}}')
-    })
-
-app.get('/project/:id/create-task', async (req, res) => {
-    res.render('createTask')
+    res.redirect(`/projects/${(project.id)}`)
 })
 
-app.post('/project/{{project.id}}/create-task', async (req, res) => {
 
-    const projectid =  await Project.findByPk(req.params.id)
-    await Task.create({
-        title: req.body.title,
-        description: req.body.description,
-        column: 0,
-        ProjectId: projectid
-    })
-        res.redirect('project-dashboard')
-    })
-
-app.get('/project/:id', async (req, res) => {
-    const tasks = await Task.findAll()
-    res.render('projectBoard', {tasks})
+app.get('/projects/:projectid', async (req, res) => {
+    const projectID =  req.params.projectid
+    const project = await Project.findByPk(projectID)
+    const tasks = await project.getTasks()
+    res.render('projectBoard', {tasks, projectID})
 })
 
 app.get('/create-user', async (req, res) => {
@@ -85,25 +77,44 @@ app.post('/create-user', async (req, res) => {
         name: req.body.name,
         avatar: req.body.avatar,
     })
-        res.redirect('allProjects')
+        res.redirect('/allProjects')
     })
 
-app.get('/:name/:id/delete', async (req, res) => {
-    Task.findByPk(req.params.id)
-        .then(task => {
-            task.destroy()
-                res.redirect('/')
-            })
+app.get(`/projects/:projectid/create-task`, async (req, res) => {
+    const projectID =  req.params.projectid
+    res.render('createTask',{projectID})
+}) 
+
+app.post('/projects/:projectid/create-task', async (req, res) => {
+    const projectID =  req.params.projectid
+    await Task.create({
+        title: req.body.title,
+        description: req.body.description,
+        column: 0,
+        ProjectId: projectID
     })
-// app.get('/restaurants/:id/edit', async (req, res) => {
-//     const restaurant = await Restaurant.findByPk(req.params.id)
-//     res.render('edit', {restaurant})
-//     })
-// app.post('/restaurants/:id/edit', async (req, res) => {
-//     const restaurant = await Restaurant.findByPk(req.params.id)
-//     await restaurant.update(req.body)
-//     res.redirect(`/restaurants/${restaurant.id}`)
-//     })
+    res.redirect(`/projects/${projectID}`)
+})
+
+app.get('/:id/delete', async (req, res) => {
+    const id =  req.params.id
+    const task = await Task.findByPk(req.params.id)
+    const projectID= task.ProjectId
+    await task.destroy()
+    res.redirect(`/projects/${projectID}`)
+})
+
+app.get('/:id/edit', async (req, res) => {
+    const task = await Task.findByPk(req.params.id)
+    res.render('editTask', {task})
+})
+
+app.post('/:id/edit', async (req, res) => {
+    const task = await Task.findByPk(req.params.id)
+    await task.update(req.body)
+    res.redirect(`/projects/${task.ProjectId}`)
+})
+
 
 app.listen(port, () => {
     console.log(`Server listening at http://localhost:${port}`)

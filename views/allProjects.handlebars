@@ -18,15 +18,17 @@
 
   <div class="row">
     {{#each projects}}
+    <a href="/projects/{{this.id}}">
     <div class="col-sm-3">
       <div class="card">
         <div class="card-body">
           <h5 class="card-title">{{this.name}}</h5>
           <p class="card-text">{{this.summary}}</p>
-          <a href="/projects/{{this.name}}" class="btn btn-primary">Open Project</a>
+          <a href="/projects/{{this.id}}" class="btn btn-primary">Open Project</a>
         </div>
       </div>
     </div>
+    </a>
     {{/each}}
 
     <div class="col-sm-3">
