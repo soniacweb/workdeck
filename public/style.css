@@ -1,12 +1,36 @@
+/* Project Dashboard */
+.page-container {
+  height: 100vh;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.sub-wrapper {
+  height: 100%;
+}
 .sub-container {
-    height: 100vh;
-    background: yellow;
+  height: 100%;
+  background: yellow;
+  width: 100%;
+  padding: 0.5rem;
+  border: 2px black dashed;
 }
 
 .card {
-    background-color: white;
+  background-color: white;
+}
+
+.links {
+  width: 100%;
+  align-self: flex-end;
 }
 
 p.avatar {
-    font-size: 3rem;
+  font-size: 3rem;
+}
+
+.fa-plus-square {
+  font-size: 3rem;
+  color: green;
 }
