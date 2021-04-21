@@ -148,10 +148,33 @@ Task.belongsTo(User)
 Task.belongsTo(Project)
 ```
 
-## Handlebars
+## Passing the data to the views template - Handlebars
 
-We used a templating framework called Handlebars to dynamically iterate, inject and render relevant information from our sequelize database. 
-An exerpt of this is below: 
+We used a templating framework called Handlebars to dynamically iterate, inject and render relevant information from our sequelize database by parsing them through handlebar's placeholder syntax `{{}}`.
+
+Our first step was to prepare the data for the views template and the second step was to pass it to the views template. The example below uses sequelize to fetch all the projects and passes them to the `createFirstProject.handlebars` layout template. An if check is used to check if any projects already exist in the database -if true, the user will be directed to the `allProjects` page, else the user is sent to `createProject` layouts template. The second argument to `response.render` is the `projects` data returned from the sequelize query.
+
+```
+app.get('/', async (req, res) => {
+    const projects = await Project.findAll()
+   if(projects.length > 0){
+    res.render('allProjects', {projects})
+   } else {
+    res.render('createFirstProject')
+   }
+})
+
+app.get('/all-projects', async (req, res) => {
+    const projects = await Project.findAll()
+    if(projects.length > 0){
+    res.render('allProjects', {projects})
+    } else {
+    res.render('createFirstProject')
+    }
+})
+
+```
+To repeat a block of code for every item in our `projects` array from our seqelize query, we used Handlebars's built in template helper {{#each}}. An exerpt of this is below: 
 
 ```
   <div class="row">
@@ -170,7 +193,6 @@ An exerpt of this is below:
     {{/each}}
 ```
 
-A Handlebars expression is content surrounded by {{ }}. When the template is executed, the expression is replaced with values from an input object.
 
 ### Handlebars File Structure
 
@@ -186,6 +208,35 @@ views
 └── layouts
     └── main.handlebars
 ```
+
+# Route parameters
+
+As we wanted to incorporate different pages to the user journey, we needed to create dynamic links leading to different viewable pages. 
+
+In order to click on an individual project card in the project dashboard and then view that project's task page, we needed to create a dynamic link by wrapping our project card in an `anchor` tag. We then made the `href` point to a particular address on our server:
+
+
+```
+ <div class="row">
+    {{#each projects}}
+    <a href="/projects/{{this.id}}">
+    ....
+    </a>
+    {{/each}}
+```
+## New Route
+To deal with these requests we needed to add new routes on our server. The last part of our route for this particular request, is going to be different depending on which project the user clicks on. We needed a route that also took in a route parameter:
+
+```
+app.get('/projects/:projectid', async (req, res) => {
+    const projectID =  req.params.projectid
+    const project = await Project.findByPk(projectID)
+    const tasks = await project.getTasks({
+        include: [User]
+    })
+
+```
+
 
 ## Drag and Drop Feature - projectBoard.js
 
@@ -211,6 +262,26 @@ const updateColumn = await fetch(`/${draggable.id}/updatecolumn`, {
 
 ```
 
+# Responsive CSS grids and CSS Grid
 
+### Mobile first
+We adopted the mobile first approach using the below media queries:
+```
+* {
+    padding: 0;
+    margin: 0;
+}
+
+/* put css styling for  
+   mobile devices here */
+
+@media screen and (min-width: 40em) {
+  /* put css styling for mid-sized screens here */
+}
+
+@media screen and (min-width: 60em) {
+  /* put css styling for massive screens here */
+}
+```
 
 ### 🧐 Challenges
