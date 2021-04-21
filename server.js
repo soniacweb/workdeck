@@ -75,8 +75,6 @@ app.get('/projects/:projectid', async (req, res) => {
         else if(task.column === 2){ col2Task.push(task)}
     })
 
-
-
     res.render('projectBoard', {col0Task,col1Task,col2Task, projectID})
 })
 
@@ -85,16 +83,18 @@ app.get('/create-user', async (req, res) => {
 })
 
 app.post('/create-user', async (req, res) => {
-    await User.create({
+    const user = await User.create({
         name: req.body.name,
         avatar: req.body.avatar,
     })
-        res.redirect('/allProjects')
+        res.redirect('/all-projects')
     })
+
 
 app.get(`/projects/:projectid/create-task`, async (req, res) => {
     const projectID =  req.params.projectid
-    res.render('createTask',{projectID})
+    const users= await User.findAll()
+    res.render('createTask',{projectID, users})
 }) 
 
 app.post('/projects/:projectid/create-task', async (req, res) => {
@@ -103,7 +103,8 @@ app.post('/projects/:projectid/create-task', async (req, res) => {
         title: req.body.title,
         description: req.body.description,
         column: 0,
-        ProjectId: projectID
+        ProjectId: projectID,
+        UserId: req.body.userid
     }) 
     res.redirect(`/projects/${projectID}`)
 })

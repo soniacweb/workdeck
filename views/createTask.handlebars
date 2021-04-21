@@ -25,9 +25,10 @@
       <textarea type="text" class="form-control" id="task-description" rows="3" name="description"></textarea>
       <div class="col-auto">
         <label for="user">Assign to a user:</label>
-        <select name="users" id="user">
-          {{#each user}}
-          <option value="{{this.name}}">{{this.name}}</option>
+        <select name="userid" id="user">
+          <option value="unassigned">unassigned</option>
+          {{#each users}}
+          <option value="{{this.id}}">{{this.name}}{{this.avatar}}</option>
           {{/each}}
         </select>
         <br>

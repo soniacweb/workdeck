@@ -10,4 +10,9 @@
     <label>New Description:</label><br>
     <input type="text" name="description" placeholder= "please add your new task description" required><br><br>
     <input type="submit" value="Submit">
+    <label>New assignee</label><br>
+    <option value="unassigned">unassigned</option>
+          {{#each users}}
+    <option value="{{this.id}}">{{this.name}}{{this.avatar}}</option>
+        {{/each}}
 </form>
