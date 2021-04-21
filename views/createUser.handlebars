@@ -11,8 +11,6 @@
 </head>
 
 <body>
-
-
   <!-- form for creating user -->
   {{!-- <form action="/createUser" method="POST"></form> --}}
   <div action="/createUser" method="POST" class="input-group flex-nowrap">
@@ -22,32 +20,17 @@
   </div>
   <span class="input-group-text">Please choose your avatar</span>
   <div class="container">
-    <div class="row">
-      <div class="col-sm avatar-container">
-        <p class="avatar"> &#129409;</p>
-      </div>
-      <div class="col-sm avatar-container">
-        <p class="avatar"> &#128025;</p>
-      </div>
-      <div class="col-sm avatar-container">
-        <p class="avatar"> &#128036;</p>
-      </div>
-      <div class="col-sm avatar-container">
-        <p class="avatar"> &#128029;</p>
-      </div>
-      <div class="col-sm avatar-container">
-        <p class="avatar"> &#128040;</p>
-      </div>
-      <div class="col-sm avatar-container">
-        <p class="avatar"> &#128044;</p>
-      </div>
-      <div class="col-sm avatar-container">
-        <p class="avatar"> &#128056;</p>
-      </div>
-      <div class="col-sm avatar-container">
-        <p class="avatar"> &#128054;</p>
-      </div>
-    </div>
+    <select>
+      <option class="avatar"> &#129409;</option>
+      <option class="avatar"> &#128025;</option>
+      <option class="avatar"> &#128036;</option>
+      <option class="avatar"> &#128029;</option>
+      <option class="avatar"> &#128040;</option>
+      <option class="avatar"> &#128044;</option>
+      <option class="avatar"> &#128056;</option>
+      <option class="avatar"> &#128054;</option>
+    </select>
+
   </div>
   <div class="input-group mb-3">
     <button type="submit" value="Submit" class="btn btn-primary mb-3">Create User</button>

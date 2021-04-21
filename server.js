@@ -64,7 +64,20 @@ app.get('/projects/:projectid', async (req, res) => {
     const projectID =  req.params.projectid
     const project = await Project.findByPk(projectID)
     const tasks = await project.getTasks()
-    res.render('projectBoard', {tasks, projectID})
+
+    const col0Task = []
+    const col1Task = []
+    const col2Task = []
+
+    tasks.forEach(task => {
+        if(task.column === 0){ col0Task.push(task)}
+        else if(task.column === 1){ col1Task.push(task)}
+        else if(task.column === 2){ col2Task.push(task)}
+    })
+
+
+
+    res.render('projectBoard', {col0Task,col1Task,col2Task, projectID})
 })
 
 app.get('/create-user', async (req, res) => {
@@ -99,7 +112,11 @@ app.post('/projects/:projectid/create-task', async (req, res) => {
 app.patch('/:id/updatecolumn', async (req, res) => {
     const taskId = req.params.id;
     const task = await Task.findByPk(taskId)
-    await task.update(req.body.column);  
+    await task.update({
+        column: req.body.column
+      });  
+
+
     console.log(req.body)
     res.sendStatus(200)
 })

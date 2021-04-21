@@ -57,9 +57,13 @@ async function updateColumns(column, draggable) {
     //patch request using ajax to update the server
   const updateColumn = await fetch(`/${draggable.id}/updatecolumn`, {
     method: 'PATCH',
+    headers: {
+        'Content-Type': 'application/json'
+      },
     body: JSON.stringify({
     column: column.id,   
     taskId: draggable.id 
+    
     })  
   })
   .then(response =>  {
