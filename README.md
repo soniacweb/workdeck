@@ -10,7 +10,7 @@ Clone or download the repo
 - npm init
 - node server (to run the server)
 
-# 💎 Brief
+# 🎯 Brief
 
 Initialise a relational database for Projects, Tasks for each project, and assigned Users for each tasks. 
 Decide on 2 critical user journeys and encode these two journeys.
@@ -64,7 +64,7 @@ Write test scripts in either Jest of Cypress to test out features (the applicati
 
 ### ✔️ Approach Taken
 
-#### 🔮 Project Plan ####
+#### 💭 Project Plan ####
 - Ideas and discussions, research, team brief, mockups
 - Set up (libraries, backend and frontend basic scafolding)
 - Backend functionality and database set up, testing endpoints and HTTP requests
@@ -75,7 +75,7 @@ Write test scripts in either Jest of Cypress to test out features (the applicati
 <!-- - Deployment (debug and deploy) -->
 
 
-# Wireframing- Mockups Architecture
+# 🔮 Wireframing- Mockups Architecture
 
 Our app comprises of 4 main pages: User, Project, Project Dashboard, and Tasks for single projects listing all tasks pertaining to the specific project.
 
@@ -101,7 +101,7 @@ We constructed a very basic mockup on figma to illustrate the user journey. The 
 <!-- <img src="" style="400px margin: 0 auto;" /> -->
 
 
-## Sequelize - db.js, model.js, server.js
+## 💎 Sequelize - db.js, model.js, server.js
 
 The objective was to implement a data model with Sequelize.
 
@@ -119,7 +119,7 @@ const sequelize = new Sequelize('database', 'username', 'password', {
  module.exports={sequelize, DataTypes, Model};
 ```
 
-## Defining the model in model.js
+## 🗺️ Defining the model in model.js
 
 We quickly learnt models are fundamental in Sequelize and initialised 3 to represent our tables in our database.  It's represented by classes that extends Model. This format only requires us to extend from the Sequelize class Model as a method of inheritance. The addition of an `init` method defines the table columns and their types, while the `options` setting sets the `timestamps: false` to avoid a `created_at` column appearing. 
 
@@ -137,7 +137,7 @@ Project.init({
 
 ```
 
-## Sequelize relationships in model.js
+## 🧩 Sequelize relationships in model.js
 
 To connect tables in sequelize our model definitions needed to specify their relationships in order for Sequelize to generate new foreign key columns. The below lists the relational defintions between our models: 
 
@@ -148,7 +148,7 @@ Task.belongsTo(User)
 Task.belongsTo(Project)
 ```
 
-## Handlebars File Structure
+## 🏗️ Handlebars File Structure
 
 The views folder contains Handlebars templates which get rendered into layouts.
 
@@ -163,7 +163,7 @@ views
     └── main.handlebars
 ```
 
-## Passing the data to the views template - Handlebars
+## 🚧 Passing the data to the views template - Handlebars
 
 We used a templating framework called Handlebars to dynamically iterate, inject and render relevant information from our sequelize database by parsing them through handlebar's placeholder syntax `{{}}`.
 
@@ -209,7 +209,7 @@ To repeat a block of code for every item in our `projects` array from our seqeli
 ```
 
 
-# Route parameters
+# 🛤️ Route parameters
 
 As we wanted to incorporate different pages to the user journey, we needed to create dynamic links leading to different viewable pages. 
 
@@ -224,7 +224,7 @@ In order to click on an individual project card in the project dashboard and the
     </a>
     {{/each}}
 ```
-## New Route
+## 📲 New Route
 To deal with these requests we needed to add new routes on our server. The last part of our route for this particular request, is going to be different depending on which project the user clicks on. We needed a route that also took in a route parameter:
 
 ```
@@ -237,7 +237,7 @@ app.get('/projects/:projectid', async (req, res) => {
 
 ```
 
-# Forms and Submitting User Inputs - CRUD operations
+# 🔍 Forms and Submitting User Inputs - CRUD operations
 
 We created forms for our CRUD operations. The input type of 'submit' creates a button which posts the form data to the specified URL in the form's `action` attribute.
 
@@ -270,7 +270,7 @@ app.post('/create-project', async (req, res) => {
 })
 ```
 
-The above code allows the server to receive and process the form data. We first specified the the Form data will be 'posted' to the `/create-project` route, which is why we needed to create a new route matching the exact URL path.
+The above code allows the server to receive and process the form data. We first specified the form data will be 'posted' to the `/create-project` route, which is why we needed to create a new route matching the exact URL path.
 
 We repeated similar steps for our app to allow users to delete tasks. On our server we defined a new route and used that to perform the delete operation.
 
@@ -285,7 +285,7 @@ app.get('/:id/delete', async (req, res) => {
 
 ```
 
-We needed a new `edit` route for users to also be able to update their tasks, but there was more involved in this process. We needed to provide the user with the form to populate with the current values. We then needed a new `update` route to post the new values too (the post request).
+We needed a new `edit` route for users to also be able to update their tasks, but there was more involved in this process. We needed to provide the user with the form to populate with the current values. We then needed a new `update` route to post the new values to (the post request).
 
 ```
 
@@ -303,7 +303,7 @@ app.post('/:id/edit', async (req, res) => {
 
 ```
 
-## Drag and Drop Feature - projectBoard.js
+## 💡 Drag and Drop Feature - projectBoard.js
 
 In order to have a visual element to our task status management, we used the event listeners, `ondragstart`, `ondrop`, and the html attribute `draggable` to support our drag and drop feature from `projectBoard.js`. Below is an exerpt to identify the change in column ids depending on the position of the task the user is dragging the task between the three presented columns. We performed an async `patch` request using ajax to update and store on the server side with the change in column id. 
 
@@ -327,7 +327,7 @@ const updateColumn = await fetch(`/${draggable.id}/updatecolumn`, {
 
 ```
 
-# Responsive CSS grids and CSS Grid
+# 📱 Responsive CSS grids and CSS Grid
 
 ### Mobile first
 We adopted the mobile first approach using the below media queries:
@@ -349,4 +349,11 @@ We adopted the mobile first approach using the below media queries:
 }
 ```
 
-### 🧐 Challenges
+### 🧐 Challenges and Key Learnings
+
+Relational data mapping felt like a challenge with sequelize and using foreign keys to make associations on the server side.
+
+### 🏆 Wins
+
+Sucessfully wiring up the submit requests on the frontend and establishing route handlers to update the database felt like a sucessful win.
+Iterating through 3 different columns and storing the positions of the tasks dependent on the draggable status in the server was also satisfying. 
