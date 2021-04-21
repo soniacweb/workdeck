@@ -1,15 +1,20 @@
-console.log('test')
-
 const draggables = document.querySelectorAll('.card');
 const containers = document.querySelectorAll('.sub-container');
+
+
+// iterating through each draggable and adding dragstart/dragend eventlistener
 draggables.forEach(draggable => {
     draggable.addEventListener('dragstart', () => {
         draggable.classList.add('dragging');
     })
-    draggable.addEventListener('dragend', () => {
+    draggable.addEventListener('dragend', (e) => {
         draggable.classList.remove('dragging');
+        // console.log(e.target.parentElement);
+        updateColumns(e.target.parentElement, draggable)
     })
 })
+
+//appending draggable to container
 containers.forEach(container => {
     container.addEventListener('dragover', e => {
         e.preventDefault();
@@ -21,8 +26,11 @@ containers.forEach(container => {
         else {
             container.insertBefore(draggable, afterElement);
         }
+       
+        
     })
 })
+// function that handles where elements are dropped 
 function getDragAfterElement(container, y) {
    const draggableElements= [...container.querySelectorAll('.draggable:not(.dragging)')]
   return draggableElements.reduce((closest, child) => {
@@ -37,4 +45,26 @@ function getDragAfterElement(container, y) {
    }, {offset: Number.NEGATIVE_INFINITY}).element;
 }
  
-  
+// update the database with the column numbers
+async function updateColumns(column, draggable) {
+// get id of container its appended to
+// get id of the task in order to select the right task to change its column number and make equal to 
+// go to server and update column number/value based on whichever container id its in
+// const draggableElements= [...container.querySelectorAll('.draggable:not(.dragging)')]
+    console.log(column, draggable)
+    console.log('ids', column.id, draggable.id);
+   
+    //patch request using ajax to update the server
+  const updateColumn = await fetch(`/${draggable.id}/updatecolumn`, {
+    method: 'PATCH',
+    body: JSON.stringify({
+    column: column.id,   
+    taskId: draggable.id 
+    })  
+  })
+  .then(response =>  {
+      const res = response.json()    
+})
+.then(res => console.log(res))
+}  
+

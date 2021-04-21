@@ -2,10 +2,10 @@ const express = require('express');
 const { Project, Task, User } = require('./models');
 const path = require('path');
 
+
 const Handlebars = require('handlebars')
 const expressHandlebars = require('express-handlebars')
 const {allowInsecurePrototypeAccess} = require('@handlebars/allow-prototype-access')
-const populateDB = require('./populateDB');
 const { sequelize, DataTypes, Model } = require('./db');
 
 const app = express();
@@ -16,7 +16,6 @@ async function initialise() {
     await sequelize.sync({ force: true });
 }
 initialise()
-// populateDB();
 
 app.use(express.urlencoded({ extended: true }))
 app.use(express.json())
@@ -92,8 +91,17 @@ app.post('/projects/:projectid/create-task', async (req, res) => {
         description: req.body.description,
         column: 0,
         ProjectId: projectID
-    })
+    }) 
     res.redirect(`/projects/${projectID}`)
+})
+
+// updating column id based on position of draggable tasks using generic endpoint
+app.patch('/:id/updatecolumn', async (req, res) => {
+    const taskId = req.params.id;
+    const task = await Task.findByPk(taskId)
+    await task.update(req.body.column);  
+    console.log(req.body)
+    res.sendStatus(200)
 })
 
 app.get('/:id/delete', async (req, res) => {

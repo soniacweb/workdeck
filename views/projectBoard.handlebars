@@ -23,9 +23,9 @@
       <div class="col">
         <h2>To do</h2>
         <a href="/projects/{{projectID}}/create-task">Add Task</a>
-        <div class="sub-container">
+        <div class="sub-container" id='0'>
           {{#each tasks}}
-          <div class="card" style="width: 18rem;" draggable="true">
+          <div class="card" style="width: 18rem;" draggable="true" id={{this.id}}>
             <div class="card-body">
               <h5 class="card-title">{{this.title}}</h5>
               <p class="card-text">{{this.description}}</p>
@@ -40,14 +40,14 @@
 
       <div class="col">
         <h2>In progress</h2>
-        <div class="sub-container">
+        <div class="sub-container" id='1'>
 
         </div>
       </div>
 
       <div class="col">
         <h2>Complete</h2>
-        <div class="sub-container">
+        <div class="sub-container" id='2'>
 
         </div>
       </div>
