@@ -63,7 +63,9 @@ app.post('/create-project', async (req, res) => {
 app.get('/projects/:projectid', async (req, res) => {
     const projectID =  req.params.projectid
     const project = await Project.findByPk(projectID)
-    const tasks = await project.getTasks()
+    const tasks = await project.getTasks({
+        include: [User]
+    })
 
     const col0Task = []
     const col1Task = []
@@ -132,7 +134,8 @@ app.get('/:id/delete', async (req, res) => {
 
 app.get('/:id/edit', async (req, res) => {
     const task = await Task.findByPk(req.params.id)
-    res.render('editTask', {task})
+    const users= await User.findAll()
+    res.render('editTask', {task, users})
 })
 
 app.post('/:id/edit', async (req, res) => {
