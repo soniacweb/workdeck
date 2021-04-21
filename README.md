@@ -148,6 +148,21 @@ Task.belongsTo(User)
 Task.belongsTo(Project)
 ```
 
+## Handlebars File Structure
+
+The views folder contains Handlebars templates which get rendered into layouts.
+
+```
+views
+├── projects.handlebars
+└── allProjects.handlebars
+└── createProject.handlebars
+└── createTask.handlebars
+└── createUser.handlebars
+└── layouts
+    └── main.handlebars
+```
+
 ## Passing the data to the views template - Handlebars
 
 We used a templating framework called Handlebars to dynamically iterate, inject and render relevant information from our sequelize database by parsing them through handlebar's placeholder syntax `{{}}`.
@@ -194,21 +209,6 @@ To repeat a block of code for every item in our `projects` array from our seqeli
 ```
 
 
-### Handlebars File Structure
-
-The views folder contains Handlebars templates which get rendered into layouts.
-
-```
-views
-├── projects.handlebars
-└── allProjects.handlebars
-└── createProject.handlebars
-└── createTask.handlebars
-└── createUser.handlebars
-└── layouts
-    └── main.handlebars
-```
-
 # Route parameters
 
 As we wanted to incorporate different pages to the user journey, we needed to create dynamic links leading to different viewable pages. 
@@ -237,6 +237,71 @@ app.get('/projects/:projectid', async (req, res) => {
 
 ```
 
+# Forms and Submitting User Inputs - CRUD operations
+
+We created forms for our CRUD operations. The input type of 'submit' creates a button which posts the form data to the specified URL in the form's `action` attribute.
+
+```
+  <form class="row g-3" action="/create-project" method="POST">
+    <div class="mb-3">
+      <label for="projectname" class="form-label">Project Title</label>
+      <input type="text" class="form-control" id="projectname" placeholder="Project Title" name="name">
+    </div>
+    <div class="mb-3">
+      <label for="projectsummary" class="form-label">Description</label>
+      <textarea type="text" class="form-control" id="projectsummary" rows="3" name="summary"></textarea>
+      <div class="col-auto">
+        <button type="submit" value="Submit" class="btn btn-primary mb-3">Add project</button>
+      </div>
+    </div>
+  </form>
+
+```
+
+To wire this up on our server side and handle the post request sucessfully, we needed a matching route in our `server.js` file to store the new project on our sequelize database:
+
+```
+app.post('/create-project', async (req, res) => {
+    const project = await Project.create({
+        name: req.body.name,
+        summary: req.body.summary,
+    })
+    res.redirect(`/projects/${(project.id)}`)
+})
+```
+
+The above code allows the server to receive and process the form data. We first specified the the Form data will be 'posted' to the `/create-project` route, which is why we needed to create a new route matching the exact URL path.
+
+We repeated similar steps for our app to allow users to delete tasks. On our server we defined a new route and used that to perform the delete operation.
+
+```
+app.get('/:id/delete', async (req, res) => {
+    const id =  req.params.id
+    const task = await Task.findByPk(req.params.id)
+    const projectID= task.ProjectId
+    await task.destroy()
+    res.redirect(`/projects/${projectID}`)
+})
+
+```
+
+We needed a new `edit` route for users to also be able to update their tasks, but there was more involved in this process. We needed to provide the user with the form to populate with the current values. We then needed a new `update` route to post the new values too (the post request).
+
+```
+
+app.get('/:id/edit', async (req, res) => {
+    const task = await Task.findByPk(req.params.id)
+    const users= await User.findAll()
+    res.render('editTask', {task, users})
+})
+
+app.post('/:id/edit', async (req, res) => {
+    const task = await Task.findByPk(req.params.id)
+    await task.update(req.body)
+    res.redirect(`/projects/${task.ProjectId}`)
+})
+
+```
 
 ## Drag and Drop Feature - projectBoard.js
 
