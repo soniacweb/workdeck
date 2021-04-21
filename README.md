@@ -34,9 +34,7 @@ The application must have client & server-side validation in place.
 
 Write test scripts in either Jest of Cypress to test out features (the application must have evidence of automated unit testing).
 
-## 🚀 Timeframe
-
-1 week
+####  🚀 Timeframe - 1 week
 
 #### 🔥 Team size - 3
 
@@ -67,7 +65,7 @@ Write test scripts in either Jest of Cypress to test out features (the applicati
 ### ✔️ Approach Taken
 
 #### 🔮 Project Plan ####
-- Ideas research, team brief, Mockup
+- Ideas and discussions, research, team brief, mockups
 - Set up (libraries, backend and frontend basic scafolding)
 - Backend functionality and database set up, testing endpoints and HTTP requests
 - Frontend UI design, research, test API CRUD
@@ -101,6 +99,100 @@ We constructed a very basic mockup on figma to illustrate the user journey. The 
 ### Project Tasks Page
 
 <!-- <img src="" style="400px margin: 0 auto;" /> -->
+
+
+## Sequelize - db.js, model.js, server.js
+
+The objective was to implement a data model with Sequelize.
+
+We first created `db.js` that sets up a connection to the database and imports sequelize types.
+
+```
+const {Sequelize, DataTypes, Model} = require('sequelize');
+const path = require('path');
+const sequelize = new Sequelize('database', 'username', 'password', {
+    dialect: 'sqlite',
+    storage: path.join(__dirname, 'database.sqlite') //best practise for file paths
+    
+});
+
+ module.exports={sequelize, DataTypes, Model};
+```
+
+## Defining the model in model.js
+
+We quickly learnt models are fundamental in Sequalize and initialised 3 to represent our tables in our database.  It's represented by classes that extends Model. This format only requires us to extend from the Sequelize class Model as a method of inheritance. The addition of an `init` method defines the table columns and their types, while the `options` setting sets the`timestamps: false` to avoid a `created_at` column appearing. 
+
+Below is an exerpt of the `Project` model:
+
+```
+class Project extends Model {
+
+}
+
+Project.init({
+    name: DataTypes.STRING,
+    summary: DataTypes.STRING,
+}, options);
+
+```
+
+## Sequalize relationships in model.js
+
+```
+Project.hasMany(Task)
+User.hasMany(Task)
+Task.belongsTo(User)
+Task.belongsTo(Project)
+```
+
+## Handlebars
+
+We used a templating framework called Handlebars to dynamically inject and render relevant information from our sequalize database. 
+An exerpt of this is below: 
+
+
+
+A Handlebars expression is content surrounded by {{ }}. When the template is executed, the expression is replaced with values from an input object.
+
+### Handlebars File Structure
+
+The views folder contains Handlebars templates which get rendered into layouts.
+
+```
+views
+├── projects.handlebars
+└── allProjects.handlebars
+└── createProject.handlebars
+└── createTask.handlebars
+└── createUser.handlebars
+└── layouts
+    └── main.handlebars
+```
+
+## Drag and Drop Feature - projectBoard.js
+
+In order to have a visual element to our task status management, we used the event listeners, `ondragstart`, `ondrop`, and the html attribute `draggable` to support our drag and drop feature from `projectBoard.js`. Below is an exerpt to identify the change in column ids depending on the position of the task the user is dragging the task between the three presented columns. We performed an async `patch` request using ajax to update and store on the server side with the change in column id. 
+
+```
+const updateColumn = await fetch(`/${draggable.id}/updatecolumn`, {
+    method: 'PATCH',
+    headers: {
+        'Content-Type': 'application/json'
+      },
+    body: JSON.stringify({
+    column: column.id,   
+    taskId: draggable.id 
+    
+    })  
+  })
+  .then(response =>  {
+      const res = response.json()    
+})
+.then(res => console.log(res))
+}  
+
+```
 
 
 
