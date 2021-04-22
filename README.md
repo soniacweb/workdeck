@@ -356,5 +356,5 @@ Adopting mobile first responsive design and using JWT Auth for serverside user a
 
 ### 🏆 Wins
 
-Sucessfully wiring up the submit requests on the frontend and establishing route handlers to update the database felt like a sucessful win.
+Working as a team and successfully wiring up the submit requests on the frontend and establishing route handlers to update the database felt like a sucessful win.
 Iterating through 3 different columns and storing the positions of the tasks dependent on the draggable status in the server was also satisfying. 
