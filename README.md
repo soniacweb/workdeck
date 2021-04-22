@@ -1,6 +1,9 @@
 <!-- ![](https://www.generalcatalyst.com/wp-content/uploads/2021/01/Multiverse-Logo.png)  -->
 
- <!-- <img src="https://i.imgur.com/3BnEIqw.png" style="width: 100px; display: block;"/> -->
+<div align="left">
+ <img src="https://i.imgur.com/3BnEIqw.png" style="width: 100px;"/>
+ </div>
+
 <div align="center">
  <img src="https://i.imgur.com/MNea7m5.png" style="width: 400px;"/>
 </div>
