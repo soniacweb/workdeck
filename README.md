@@ -8,7 +8,7 @@
  <img src="https://i.imgur.com/MNea7m5.png" style="width: 400px;"/>
 </div>
 
-#	🕶️ Deck
+#	🕶️ workdeck
 
 Welcome to Deck! A full-stack productivity app developed during our first Multiverse Bootcamp project. Deck allows the user to select a user profile and input their username before creating a project workspace. The user can also create multiple project workspaces and create different tasks unique to each project. The user can then manage the status of each task and edit them as they see fit. 
 
