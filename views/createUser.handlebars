@@ -1,39 +1,61 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  {{!--
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet"
-    integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
+    integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous"> --}}
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.3/css/all.css"
+    integrity="sha384-SZXxX4whJ79/gErwcOYf+zWLeJdY/qpuqC4cAa9rOGUstPomtqpuNWT9wdPEn2fk" crossorigin="anonymous">
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/createUser.css">
   <title>todo project</title>
 </head>
+
 <body>
   <!-- form for creating user -->
   {{!-- <form action="/createUser" method="POST"></form> --}}
-  <form action="/create-user" method="POST" class="input-group flex-nowrap">
-    <span class="input-group-text" id="addon-wrapping">@</span>
-    <input type="text" class="form-control" placeholder="Username" aria-label="Username" name="name"
-      aria-describedby="addon-wrapping">
+  <div id="wrapper">
+    <form action="/create-user" method="POST" class="input-group flex-nowrap">
+      <h1>New User</h1>
+      <div id="shadow"></div>
+
+      <div id="enter-username">
+        <span class="input-group-text" id="addon-wrapping">
+          <p>@</p>
+        </span>
+        <input type="text" class="form-control username" placeholder="Username" aria-label="Username" name="name"
+          aria-describedby="addon-wrapping">
+      </div>
       <br>
-  <span class="input-group-text">Please choose your avatar</span>
-  <div class="container">
-    <select name="avatar" id="select-user">
-      <option class="avatar" value="&#129409;"> &#129409;</option>
-      <option class="avatar" value= "&#128025;"> &#128025;</option>
-      <option class="avatar" value= "&#128036;"> &#128036;</option>
-      <option class="avatar" value= "&#128029;"> &#128029;</option>
-      <option class="avatar" value= "&#128040;"> &#128040;</option>
-      <option class="avatar" value= "&#128044;"> &#128044;</option>
-      <option class="avatar" value= "&#128056;"> &#128056;</option>
-      <option class="avatar" value= "&#128054;"> &#128054;</option>
-    </select>
+      <div id="select-avatar">
+        <span class="input-group-text choose-avi">
+          <p> Choose Your Avatar</p>
+        </span>
+        <select name="avatar" id="select-user">
+          <option class="avatar" value="&#129409;"> &#129409;</option>
+          <option class="avatar" value="&#128025;"> &#128025;</option>
+          <option class="avatar" value="&#128036;"> &#128036;</option>
+          <option class="avatar" value="&#128029;"> &#128029;</option>
+          <option class="avatar" value="&#128040;"> &#128040;</option>
+          <option class="avatar" value="&#128044;"> &#128044;</option>
+          <option class="avatar" value="&#128056;"> &#128056;</option>
+          <option class="avatar" value="&#128054;"> &#128054;</option>
+        </select>
+      </div>
+
+
+      <br>
+      {{!-- <div class="input-group mb-3"> --}}
+        <button type="submit" value="Submit" class="btn btn-primary mb-3">Create User</button>
+        {{!--
+      </div> --}}
+    </form>
   </div>
-  <br>
-  {{!-- <div class="input-group mb-3"> --}}
-    <button type="submit" value="Submit" class="btn btn-primary mb-3">Create User</button>
-  {{!-- </div> --}}
-  </form>
   {{!--
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf"
@@ -46,4 +68,5 @@
     crossorigin="anonymous"></script> --}}
   <script src="createUser.js"></script>
 </body>
+
 </html>

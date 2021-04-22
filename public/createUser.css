@@ -1,0 +1,104 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+h1 {
+  margin-bottom: 3rem;
+}
+#wrapper {
+  height: 90vh;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin-top: 2rem;
+}
+
+/* #shadow {
+  width: 80%;
+  height: 80%;
+  position: absolute;
+  left: 30%;
+  top: 30%;
+  z-index: -100;
+  box-shadow: 5px 5px 5px #45a29e;
+} */
+
+form {
+  width: 50%;
+  height: 50%;
+  border: 1px solid #1f2833;
+  box-shadow: 50px 50px 20px #45a29e;
+  padding: 2rem;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  z-index: 1000;
+}
+select {
+  width: 10rem;
+  padding: 0.2rem;
+  font-size: 1rem;
+}
+
+input {
+  width: 70%;
+  padding: 0.2rem;
+  font-size: 1rem;
+}
+.input-group-text {
+  color: white;
+  background-color: #45a29e;
+  height: 100%;
+  margin-left: 0;
+  width: 3rem;
+  text-align: center;
+  position: absolute;
+  left: 0;
+  top: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.username {
+  width: 85%;
+}
+.choose-avi {
+  width: 45%;
+}
+
+button {
+  margin-top: auto;
+}
+
+#select-avatar {
+  padding: 0.5rem;
+  background-color: #0b0c10;
+  position: relative;
+  width: 80%;
+  color: white;
+  display: flex;
+  justify-content: flex-end;
+  height: 2.5rem;
+}
+#select-user {
+  width: 50%;
+}
+
+#enter-username {
+  padding: 0.5rem;
+  background-color: #0b0c10;
+  position: relative;
+  width: 80%;
+  color: white;
+  display: flex;
+  justify-content: flex-end;
+  height: 2.5rem;
+}
+
+p {
+  font-size: 1.5rem;
+}
