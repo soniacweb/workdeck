@@ -27,13 +27,13 @@
 
   <!-- project board with individual tasks -->
   <header>
-    <h1>Project Tasks</h1>
+    <h1 class="project-workspace">Project Tasks</h1>
   </header>
   <div class="container page-container">
 
 
     <div class="col sub-wrapper">
-      <h2>To do</h2>
+      <h2 class="column-titles">To do</h2>
       <div class="sub-container" id='0'>
         <a href="/projects/{{projectID}}/create-task"><i class="far fa-plus-square"></i></a>
 
@@ -59,7 +59,7 @@
 
 
     <div class="col sub-wrapper">
-      <h2>In progress</h2>
+      <h2 class="column-titles">In progress</h2>
       <div class="sub-container" id='1'>
         {{#each col1Task}}
         <div class="card" draggable="true" id={{this.id}}>
@@ -79,7 +79,7 @@
     </div>
 
     <div class="col sub-wrapper">
-      <h2>Complete</h2>
+      <h2 class="column-titles">Complete</h2>
       <div class="sub-container" id='2'>
         {{#each col2Task}}
         <div class="card" draggable="true" id={{this.id}}>

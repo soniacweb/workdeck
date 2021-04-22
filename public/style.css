@@ -121,6 +121,11 @@ a.landing {
   z-index: 1000;
 }
 
+#task-modal {
+  height: 60%;
+
+}
+
 .first-projects-wrapper,
 .projects-wrapper {
   height: 60vh;
@@ -208,6 +213,7 @@ img.logo {
 
 .edit-task-modal {
   padding: 5rem;
+  height: 60%;
 }
 
 /* Create User CSS */
@@ -215,6 +221,11 @@ img.logo {
 h1 {
   margin-bottom: 3rem;
 }
+
+.project-workspace {
+margin: 2rem;
+}
+
 #wrapper {
   height: 90vh;
   width: 100%;
@@ -296,4 +307,22 @@ button {
 
 p {
   font-size: 1.5rem;
+}
+
+p.card-text {
+font-size: 1rem;
+margin-top: 0.2rem;
+}
+
+
+#edit-task-submit {
+background-color: #36383d;
+width: auto;
+border: none;
+color: white;
+padding: 16px 32px;
+text-decoration: none;
+margin: 4px 2px;
+cursor: pointer;
+font-family: 'Montserrat', sans-serif;
 }
