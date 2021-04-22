@@ -68,7 +68,7 @@ Write test scripts in either Jest of Cypress to test out features (the applicati
 - Ideas and discussions, research, team brief, mockups
 - Set up (libraries, backend and frontend basic scafolding)
 - Backend functionality and database set up, testing endpoints and HTTP requests
-- Frontend UI design, research, test API CRUD
+- Frontend UI design, research, test CRUD
 - Adding new features to both ends
 - Sanitize user inputs
 - Styling and Troubleshooting
