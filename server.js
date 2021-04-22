@@ -14,7 +14,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 async function initialise() {
     await sequelize.sync({ force: true });
-}
+} 
 initialise()
 
 app.use(express.urlencoded({ extended: true }))
