@@ -49,14 +49,14 @@ Write test scripts in either Jest of Cypress to test out features (the applicati
 ## 🕹 Main Technologies Used
 ### Frontend & UI: 
 
-* HTML5 (Handlebar)
+* HTML5
 * CSS3 (Flexbox)
 * JavaScript (ES6)
 * Google fonts
 * Figma
 
 ### Backend
-- Nodemon
+- Handlebars
 - Node.js
 - Express
 - SQLite3
