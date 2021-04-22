@@ -46,7 +46,7 @@ Write test scripts in either Jest of Cypress to test out features (the applicati
 ### Frontend & UI: 
 
 * HTML5 (Handlebar)
-* CSS3 (Bootstrap 5, Flexbox)
+* CSS3 (Flexbox)
 * JavaScript (ES6)
 * Google fonts
 * Figma
