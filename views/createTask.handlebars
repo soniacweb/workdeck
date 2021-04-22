@@ -26,7 +26,6 @@
         <div class="row">
           <label for="user" class="assign-user-title">Assign to a user:</label>
           <select name="userid" id="user">
-            <option value="unassigned">Unassigned</option>
             {{#each users}}
             <option value="{{this.id}}">{{this.name}}{{this.avatar}}</option>
             {{/each}}
