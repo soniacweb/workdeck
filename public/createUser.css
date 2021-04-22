@@ -23,20 +23,6 @@ h1 {
   z-index: -100;
   box-shadow: 5px 5px 5px #45a29e;
 } */
-
-form {
-  width: 50%;
-  height: 50%;
-  border: 1px solid #1f2833;
-  box-shadow: 50px 50px 20px #45a29e;
-  padding: 2rem;
-  position: relative;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-  z-index: 1000;
-}
 select {
   width: 10rem;
   padding: 0.2rem;

@@ -66,20 +66,76 @@ input[type='submit']:hover {
 header.landing-header {
   height: 30rem;
   background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
   display: block;
   margin-left: auto;
   margin-right: auto;
   width: 50%;
 }
-body.landing{
+body.landing {
   color: white;
-  background-color: #0B0C10;
+  background-color: #0b0c10;
 }
-h1.landing, p.landing, a.landing{
+h1.landing,
+p.landing,
+a.landing {
   display: block;
   margin-left: auto;
   margin-right: auto;
   width: 50%;
   text-align: center;
+  padding: 1.2rem;
 }
-  
+
+.deck {
+  color: #45a29e;
+}
+
+.modal {
+  width: 50%;
+  height: 50%;
+  border: 1px solid #1f2833;
+  box-shadow: 50px 50px 20px #45a29e;
+  padding: 2rem;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  z-index: 1000;
+}
+
+.first-projects-wrapper,
+.projects-wrapper {
+  height: 60vh;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.first-project-title,
+.project-title {
+  margin-bottom: 1rem;
+}
+.row {
+  margin: 1rem;
+  /* padding: 1rem; */
+  width: 80%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.project-title-input,
+.create-project-textarea {
+  width: 100%;
+  padding: 0.2rem;
+  font-size: 1rem;
+}
+
+.add-project-btn {
+  margin-top: 2rem;
+}

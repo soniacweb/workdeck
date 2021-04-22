@@ -36,6 +36,7 @@ body {
   flex: 1 1 auto;
   /* padding: 1rem 1rem; */
   width: 100%;
+  text-align: center;
 }
 
 .card-title {
@@ -43,9 +44,10 @@ body {
   font-size: 2rem;
   margin-top: 0;
   margin-top: 1rem;
+  color: #45a29e;
 }
 
 a {
-  color: white;
+  color: black;
   text-decoration: none;
 }
