@@ -335,27 +335,6 @@ const updateColumn = await fetch(`/${draggable.id}/updatecolumn`, {
 
 ```
 
-# 📱 Responsive CSS grids and CSS Grid
-
-### Mobile first
-We adopted the mobile first approach using the below media queries:
-```
-* {
-    padding: 0;
-    margin: 0;
-}
-
-/* put css styling for  
-   mobile devices here */
-
-@media screen and (min-width: 40em) {
-  /* put css styling for mid-sized screens here */
-}
-
-@media screen and (min-width: 60em) {
-  /* put css styling for massive screens here */
-}
-```
 
 ### 🧐 Challenges and Key Learnings
 
@@ -363,7 +342,7 @@ Relational data mapping felt like a challenge with sequelize and using foreign k
 
 ### 🔮 Future Features
 
-Using JWT Auth for serverside user authentication.
+Adopting mobile first responsive design and using JWT Auth for serverside user authentication.
 
 ### 🏆 Wins
 
