@@ -1,36 +1,47 @@
-/* Project Dashboard */
-.page-container {
-  height: 100vh;
-  width: 100%;
-  display: flex;
-  justify-content: space-between;
+body {
+  font-family: 'Montserrat', sans-serif;
 }
 
-.sub-wrapper {
-  height: 100%;
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: #333;
 }
-.sub-container {
-  height: 100%;
-  background: yellow;
-  width: 100%;
-  padding: 0.5rem;
-  border: 2px black dashed;
+li {
+  float: left;
+}
+li a {
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+li a:hover:not(.active) {
+  background-color: pink;
+}
+.active {
+  background-color: grey;
 }
 
-.card {
-  background-color: white;
+input[type='submit'] {
+  background-color: #36383d;
+  border: none;
+  color: white;
+  padding: 16px 32px;
+  text-decoration: none;
+  margin: 4px 2px;
+  cursor: pointer;
 }
 
-.links {
-  width: 100%;
-  align-self: flex-end;
-}
-
-p.avatar {
-  font-size: 3rem;
-}
-
-.fa-plus-square {
-  font-size: 3rem;
-  color: green;
+button {
+  background-color: #36383d;
+  border: none;
+  color: white;
+  padding: 16px 32px;
+  text-decoration: none;
+  margin: 4px 2px;
+  cursor: pointer;
 }
