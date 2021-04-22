@@ -1,3 +1,8 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
 body {
   font-family: 'Montserrat', sans-serif;
 }
@@ -20,7 +25,7 @@ li a {
   text-decoration: none;
 }
 li a:hover:not(.active) {
-  background-color: pink;
+  background-color: #45a29e;
 }
 .active {
   background-color: grey;
@@ -44,4 +49,16 @@ button {
   text-decoration: none;
   margin: 4px 2px;
   cursor: pointer;
+}
+
+button:hover {
+  background-color: #45a29e;
+  transition: ease-in;
+  transition: 1s;
+}
+
+input[type='submit']:hover {
+  background-color: #45a29e;
+  transition: ease-in;
+  transition: 1s;
 }
