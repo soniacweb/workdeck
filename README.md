@@ -1,11 +1,15 @@
-![](https://www.generalcatalyst.com/wp-content/uploads/2021/01/Multiverse-Logo.png) 
+<!-- ![](https://www.generalcatalyst.com/wp-content/uploads/2021/01/Multiverse-Logo.png)  -->
+
+ <img src="https://www.generalcatalyst.com/wp-content/uploads/2021/01/Multiverse-Logo.png" style="width: 200px; display: block;"/>
+ <img src="https://i.imgur.com/MNea7m5.png" style="width: 400px; display: block; margin: 0 auto;"/>
 
 
-# To-do-list-app
+#	🕶️ Deck
 
-To-do app for Multiverse Bootcamp project 1
+Welcome to Deck! A full-stack productivity app developed during our first Multiverse Bootcamp project. Deck allows the user to select a user profile and input their username before creating a project workspace. The user can also create multiple project workspaces and create different tasks unique to each project. The user can also manage the status of each task and edit them as they see fit. 
 
-# Getting Started
+
+# 🎒 Getting Started
 Clone or download the repo
 - npm init
 - node server (to run the server)
