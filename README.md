@@ -353,6 +353,10 @@ We adopted the mobile first approach using the below media queries:
 
 Relational data mapping felt like a challenge with sequelize and using foreign keys to make associations on the server side.
 
+### 🔮 Future Features
+
+Using JWT Auth for serverside user authentication.
+
 ### 🏆 Wins
 
 Sucessfully wiring up the submit requests on the frontend and establishing route handlers to update the database felt like a sucessful win.
