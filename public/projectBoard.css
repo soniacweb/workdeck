@@ -28,7 +28,7 @@ h1 {
   height: 100%;
   width: 100%;
   padding: 0.5rem;
-  border: 2px grey dashed;
+  border: 2px solid #c5c6c7;
   border-radius: 20px;
 }
 
@@ -51,6 +51,7 @@ p.avatar {
   border: 1px solid rgba(0, 0, 0, 0.125);
   border-radius: 0.25rem;
   box-shadow: 1px 1px 1px black;
+  margin-bottom: 1rem;
 }
 
 .card-body {
@@ -74,6 +75,7 @@ p.avatar {
 .fas {
   font-size: 1.5rem;
   padding: 0.4rem;
+  color: #45a29e;
 }
 .card-title {
   text-transform: capitalize;
@@ -86,10 +88,12 @@ a {
 
 .fa-plus-square {
   font-size: 3rem;
-  color: green;
+  color: #66fcf1;
+  text-shadow: 2px 2px 2px #45a29e;
   text-align: center;
 }
 
 .dragging {
-  background-color: indigo;
+  background-color: #45a29e;
+  opacity: 0.2;
 }

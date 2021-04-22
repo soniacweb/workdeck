@@ -1,19 +1,21 @@
-<header class= "edit-task">
-
-<h1 class= "edit-task">Edit {{task.title}}</h1><BR>
+<header class="edit-task">
 </header>
-
-<form class= "edit-task" action="/{{task.id}}/edit" method="POST">
-    <label>New Name:</label><br>
-    <input type="text" name="title" minlength="1" title="task must have a title" placeholder= "please enter your new task title" required><br><BR>
-    <p>Current description: {{task.description}}</p><br>
-    <label>New Description:</label><br>
-    <input type="text" name="description" placeholder= "please add your new task description" required><br><br>
-    <label>New assignee</label><br>
-    <select name="UserId">
-          {{#each users}}
-    <option value="{{this.id}}">{{this.name}}{{this.avatar}}</option>
-        {{/each}}
+<div class="edit-task-wrapper">
+    <form class="edit-task-modal modal" action="/{{task.id}}/edit" method="POST">
+        <h1 class="edit-task">Edit {{task.title}}</h1><br />
+        <label>New Task Name:</label><br>
+        <input class="edit-task-name" type="text" name="title" minlength="1" title="task must have a title"
+            placeholder="please enter your new task title" required><br><BR>
+        <p>Current description: {{task.description}}</p><br>
+        <label>New Description:</label><br>
+        <input class="edit-description-textarea" type="text" name="description"
+            placeholder="please add your new task description" required><br><br>
+        <label>New Assignee</label><br>
+        <select name="UserId" class="select-user-edit">
+            {{#each users}}
+            <option value="{{this.id}}">{{this.name}}{{this.avatar}}</option>
+            {{/each}}
         </select>
-    <input type="submit" value="Submit">
-</form>
+        <input type="submit" value="Submit">
+    </form>
+</div>
