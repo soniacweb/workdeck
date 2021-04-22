@@ -8,6 +8,8 @@
     "sqlite3": "^5.0.2"
   },
   "devDependencies": {
+    "@cypress/code-coverage": "^3.9.4",
+    "cypress": "^7.1.0",
     "nodemon": "^2.0.7"
   }
 }

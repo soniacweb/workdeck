@@ -1,11 +1,19 @@
-![](https://www.generalcatalyst.com/wp-content/uploads/2021/01/Multiverse-Logo.png) 
+<!-- ![](https://www.generalcatalyst.com/wp-content/uploads/2021/01/Multiverse-Logo.png)  -->
+
+<div align="left">
+ <img src="https://i.imgur.com/3BnEIqw.png" width="100" height="100" />
+ </div>
+
+<div align="center">
+ <img src="https://i.imgur.com/MNea7m5.png" style="width: 400px;"/>
+</div>
+
+#	🕶️ Deck
+
+Welcome to Deck! A full-stack productivity app developed during our first Multiverse Bootcamp project. Deck allows the user to select a user profile and input their username before creating a project workspace. The user can also create multiple project workspaces and create different tasks unique to each project. The user can then manage the status of each task and edit them as they see fit. 
 
 
-# To-do-list-app
-
-To-do app for Multiverse Bootcamp project 1
-
-# Getting Started
+# 🎒 Getting Started
 Clone or download the repo
 - npm init
 - node server (to run the server)
@@ -42,7 +50,7 @@ Write test scripts in either Jest of Cypress to test out features (the applicati
 ### Frontend & UI: 
 
 * HTML5 (Handlebar)
-* CSS3 (Bootstrap 5, Flexbox)
+* CSS3 (Flexbox)
 * JavaScript (ES6)
 * Google fonts
 * Figma
