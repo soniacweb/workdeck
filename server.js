@@ -14,7 +14,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 async function initialise() {
     await sequelize.sync({ force: true });
-}
+} 
 initialise()
 
 app.use(express.urlencoded({ extended: true }))
@@ -28,11 +28,12 @@ app.set('view engine', 'handlebars')
 
 // create if check- if projects exist, direct to allProjects, else send to createProject
 app.get('/', async (req, res) => {
+    const users = await User.findAll()
     const projects = await Project.findAll()
-   if(projects.length > 0){
-    res.render('allProjects', {projects})
+   if(users.length > 0){
+    res.redirect('all-projects')
    } else {
-    res.render('createFirstProject')
+    res.redirect('create-user')
    }
 })
 
