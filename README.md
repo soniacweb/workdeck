@@ -91,18 +91,21 @@ We constructed a very basic mockup on figma to illustrate the user journey. The 
 
  <img src="https://i.imgur.com/wR8rpH3.png" style="width: 500px; display: block; margin: 0 auto;"/>
 
-### User Page
+### Landing Page
 
-<!-- <img src="" style="400px margin: 0 auto;" /> -->
+<div align="center">
+<img src="https://i.imgur.com/Vx0ZiqV.png" style="200px margin: 0 auto;" />
+</div>
 
+### New User Page
 
-### New Project Page
+<img src="https://i.imgur.com/UfEjUNP.png" style="400px margin: 0 auto;" />
 
-<!-- <img src="" style="400px margin: 0 auto;" /> -->
+### New Projects Page
+
+<img src="https://i.imgur.com/dWeLYGY.png" style="400px margin: 0 auto;" />
 
 ### Project Dashboard Page
-
-<!-- <img src="" style="400px margin: 0 auto;" /> -->
 
 ### Project Tasks Page
 
@@ -334,7 +337,6 @@ const updateColumn = await fetch(`/${draggable.id}/updatecolumn`, {
 }  
 
 ```
-
 
 ### 🧐 Challenges and Key Learnings
 
