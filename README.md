@@ -93,9 +93,8 @@ We constructed a very basic mockup on figma to illustrate the user journey. The 
 
 ### Landing Page
 
-<div align="center">
 <img src="https://i.imgur.com/Vx0ZiqV.png" style="200px margin: 0 auto;" />
-</div>
+
 
 ### New User Page
 
@@ -107,7 +106,16 @@ We constructed a very basic mockup on figma to illustrate the user journey. The 
 
 ### Project Dashboard Page
 
+<img src="https://i.imgur.com/gRc1npE.png" style="400px margin: 0 auto;" />
+
 ### Project Tasks Page
+
+<img src="https://i.imgur.com/aUtTWnI.png" style="400px margin: 0 auto;" />
+
+### Edit Form 
+
+<img src="https://i.imgur.com/bb6nGDc.png" style="400px margin: 0 auto;" />
+
 
 <!-- <img src="" style="400px margin: 0 auto;" /> -->
 
