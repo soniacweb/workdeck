@@ -27,13 +27,23 @@ app.engine('handlebars', handlebars)
 app.set('view engine', 'handlebars')
 
 // create if check- if projects exist, direct to allProjects, else send to createProject
+// app.get('/', async (req, res) => {
+//     const users = await User.findAll()
+//     const projects = await Project.findAll()
+//    if(users.length > 0){
+//     res.redirect('all-projects')
+//    } else {
+//     res.redirect('create-user')
+//    }
+// })
+
 app.get('/', async (req, res) => {
     const users = await User.findAll()
     const projects = await Project.findAll()
    if(users.length > 0){
     res.redirect('all-projects')
    } else {
-    res.redirect('create-user')
+    res.render('landing')
    }
 })
 

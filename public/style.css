@@ -34,3 +34,24 @@ p.avatar {
   font-size: 3rem;
   color: green;
 }
+
+header.landing-header {
+  height: 30rem;
+  background-repeat: no-repeat;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 50%;
+}
+body.landing{
+  color: white;
+  background-color: #0B0C10;
+}
+h1.landing, p.landing, a.landing{
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 50%;
+  text-align: center;
+}
+  
