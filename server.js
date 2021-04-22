@@ -56,7 +56,6 @@ app.get('/all-projects', async (req, res) => {
     }
 })
 
-
 app.get('/create-project', async (req, res) => {
     res.render('createProject')
 })
