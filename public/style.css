@@ -12,10 +12,13 @@ ul {
   margin: 0;
   padding: 0;
   overflow: hidden;
-  background-color: #333;
+  background-color: #0B0C10;
+  height: 10;
+  display: flex;
 }
 li {
   float: left;
+  height: 100%;
 }
 li a {
   display: block;
@@ -23,8 +26,10 @@ li a {
   text-align: center;
   padding: 14px 16px;
   text-decoration: none;
+  display: flex;
+  height: 100%;
 }
-li a:hover:not(.active) {
+li.navlink :hover {
   background-color: #45a29e;
 }
 .active {
@@ -139,3 +144,20 @@ a.landing {
 .add-project-btn {
   margin-top: 2rem;
 }
+
+/* .logo{
+  height: 50%;
+  width: 50%;
+} */
+
+li.logo{
+  padding: 0;
+  margin:0;
+  width: 10%;
+}
+
+img.logo{
+  width: 100%;
+  height: 100%;
+}
+
